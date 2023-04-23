@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "775191008802",
+    "project_id": "my-quiz-9236e",
+    "storage_bucket": "my-quiz-9236e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775191008802:android:5f33b083405803b161dc7b",
+        "android_client_info": {
+          "package_name": "com.example.myquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775191008802-ceoaanigk9tifqn1usvscenep5repris.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATYcH2f7hgKB-Le25IifJQu-4OLGLS_ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775191008802-ceoaanigk9tifqn1usvscenep5repris.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775191008802:android:239988cbc122df7561dc7b",
+        "android_client_info": {
+          "package_name": "com.example.notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775191008802-ceoaanigk9tifqn1usvscenep5repris.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATYcH2f7hgKB-Le25IifJQu-4OLGLS_ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775191008802-ceoaanigk9tifqn1usvscenep5repris.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775191008802:android:016295952f082c8961dc7b",
+        "android_client_info": {
+          "package_name": "com.ghanshyam.brainiac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775191008802-ceoaanigk9tifqn1usvscenep5repris.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATYcH2f7hgKB-Le25IifJQu-4OLGLS_ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775191008802-ceoaanigk9tifqn1usvscenep5repris.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
