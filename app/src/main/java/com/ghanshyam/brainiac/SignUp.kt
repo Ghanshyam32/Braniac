@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,6 +21,12 @@ class SignUp : AppCompatActivity() {
         createBtn.setOnClickListener() {
             signUpUser();
 
+
+        }
+        val signInBtn: TextView = findViewById(R.id.signInActivity)
+        signInBtn.setOnClickListener() {
+            val i: Intent = Intent(this, Login::class.java)
+            startActivity(i)
         }
     }
 
@@ -29,9 +37,9 @@ class SignUp : AppCompatActivity() {
 
 //        createBtn.setOnClickListener() {
 
-        val email: String = Temail.toString();
-        val password: String = Tpassword.toString();
-        val confirmPassword: String = TconfirmPassword.toString();
+        val email: String = Temail.text.toString();
+        val password: String = Tpassword.text.toString();
+        val confirmPassword: String = TconfirmPassword.text.toString();
 
 
         if (email.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
@@ -42,20 +50,19 @@ class SignUp : AppCompatActivity() {
             Toast.makeText(this, "password and confirm password doesn't match", Toast.LENGTH_SHORT)
                 .show();
             return;
-        } else {
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) {
-                    if (it.isSuccessful) {
-                        Toast.makeText(this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                        val i: Intent = Intent(applicationContext, LauncherActivity::class.java);
-                        startActivity(i);
-
-                    }
-//            else {
-//                Toast.makeText(this, "Error creating user.", Toast.LENGTH_SHORT).show();
-//            }
-                }
         }
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) {
+                if (it.isSuccessful) {
+                    Toast.makeText(this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                    val i: Intent = Intent(applicationContext, LauncherActivity::class.java);
+                    startActivity(i);
+                    finish()
+
+                } else {
+                    Toast.makeText(this, "Error creating user.", Toast.LENGTH_SHORT).show();
+                }
+            }
 
 
     }
