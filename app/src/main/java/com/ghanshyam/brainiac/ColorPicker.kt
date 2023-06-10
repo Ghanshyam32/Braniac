@@ -5,7 +5,7 @@ class ColorPicker {
         "#3EB9DF",
         "#3685BC",
         "#D36280",
-        "E44F55"
+        "#E44F55"
     )
     var currentColorIndex = 0
 

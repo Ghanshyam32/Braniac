@@ -9,8 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.ghanshyam.brainiac.IconPicker
-import com.ghanshyam.brainiac.ColorPicker
 
 class QuizAdapter(
     val context: Context, val quizzes: List<Quiz>
@@ -29,8 +27,8 @@ class QuizAdapter(
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
 
         holder.textViewTitle.text = quizzes[position].title
-        holder.cardContainer.setCardBackgroundColor(Color.parseColor(ColorPicker.getColor()))
-        holder.iconView.setImageResource(IconPicker.getIcon())
+        holder.cardContainer.setCardBackgroundColor(Color.parseColor(ColorPicker().getColor()))
+        holder.iconView.setImageResource(IconPicker().getIcon())
     }
 
     inner class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
