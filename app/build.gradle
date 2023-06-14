@@ -8,6 +8,10 @@ android {
     namespace 'com.ghanshyam.brainiac'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.ghanshyam.brainiac"
         minSdk 24

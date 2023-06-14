@@ -1,5 +1,6 @@
 package com.ghanshyam.brainiac
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ghanshyam.brainiac.databinding.ActivityLauncherBinding
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LauncherActivity : AppCompatActivity() {
@@ -18,11 +22,39 @@ class LauncherActivity : AppCompatActivity() {
     private var quizList = mutableListOf<Quiz>()
     lateinit var firestore: FirebaseFirestore
 
+    private lateinit var binding: ActivityLauncherBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityLauncherBinding.inflate(layoutInflater)
+        val view = binding.root
         setContentView(R.layout.activity_launcher)
         setUpView()
         populateData()
+        setUpDatePicker()
+    }
+
+    private fun setUpDatePicker() {
+
+        val dateP = findViewById<FloatingActionButton>(R.id.btnDatePicker)
+
+        dateP.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker().build()
+            datePicker.show(supportFragmentManager, "DatePicker")
+            datePicker.addOnPositiveButtonClickListener {
+                Log.d("DATEPICKER", datePicker.headerText)
+                val intent = Intent(this, QuestionActivity::class.java)
+                intent.putExtra("DATE", datePicker.headerText)
+                startActivity(intent)
+            }
+            datePicker.addOnNegativeButtonClickListener {
+                Log.d("DATEPICKER", datePicker.headerText)
+
+            }
+            datePicker.addOnCancelListener {
+                Log.d("DATEPICKER", "Date Picker Cancelled")
+            }
+        }
     }
 
     private fun populateData() {
@@ -30,7 +62,6 @@ class LauncherActivity : AppCompatActivity() {
         quizList.add(Quiz("12-10-2022", "12-10-2022"))
         quizList.add(Quiz("12-10-2022", "12-10-2022"))
         quizList.add(Quiz("12-10-2022", "12-10-2022"))
-
 
 
     }
@@ -45,7 +76,7 @@ class LauncherActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
         val collection = firestore.collection("brainiac")
         collection.addSnapshotListener { value, error ->
-            if(value == null || error != null){
+            if (value == null || error != null) {
                 Toast.makeText(this, "Error fetching data", Toast.LENGTH_SHORT).show()
                 return@addSnapshotListener
             }
