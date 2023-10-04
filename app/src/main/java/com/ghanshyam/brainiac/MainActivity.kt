@@ -18,17 +18,27 @@ class MainActivity : AppCompatActivity() {
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {
             Toast.makeText(this, "User is already logged in", Toast.LENGTH_SHORT).show()
-            val i = Intent(this, LauncherActivity::class.java)
-            startActivity(i)
+            redirect("LAUNCHER")
         }
 
         getStarted.setOnClickListener() {
-            val intent: Intent = Intent(applicationContext, SignUp::class.java);
-            startActivity(intent);
+            redirect("SIGNUP")
         }
         loginBtn.setOnClickListener() {
-            val intent: Intent = Intent(applicationContext, Login::class.java);
-            startActivity(intent);
+            redirect("LOGIN")
         }
     }
+
+    private fun redirect(name: String) {
+        val intent = when (name) {
+            "LOGIN" -> Intent(this, Login::class.java)
+            "SIGNUP" -> Intent(this, SignUp::class.java)
+            "LAUNCHER" -> Intent(this, LauncherActivity::class.java)
+            else ->
+                throw Exception("no path exists")
+        }
+        startActivity(intent)
+        finish()
+    }
+
 }

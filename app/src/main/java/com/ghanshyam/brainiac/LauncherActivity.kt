@@ -15,6 +15,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class LauncherActivity : AppCompatActivity() {
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
@@ -30,7 +32,6 @@ class LauncherActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(R.layout.activity_launcher)
         setUpView()
-        populateData()
         setUpDatePicker()
     }
 
@@ -43,8 +44,10 @@ class LauncherActivity : AppCompatActivity() {
             datePicker.show(supportFragmentManager, "DatePicker")
             datePicker.addOnPositiveButtonClickListener {
                 Log.d("DATEPICKER", datePicker.headerText)
+                val dateFormatter = SimpleDateFormat("dd-mm-yyyy")
+                val date = dateFormatter.format(Date(it))
                 val intent = Intent(this, QuestionActivity::class.java)
-                intent.putExtra("DATE", datePicker.headerText)
+                intent.putExtra("DATE", date)
                 startActivity(intent)
             }
             datePicker.addOnNegativeButtonClickListener {

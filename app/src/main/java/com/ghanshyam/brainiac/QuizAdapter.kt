@@ -1,12 +1,14 @@
 package com.ghanshyam.brainiac
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -29,6 +31,13 @@ class QuizAdapter(
         holder.textViewTitle.text = quizzes[position].title
         holder.cardContainer.setCardBackgroundColor(Color.parseColor(ColorPicker().getColor()))
         holder.iconView.setImageResource(IconPicker().getIcon())
+
+        holder.itemView.setOnClickListener{
+            Toast.makeText(context, quizzes[position].title, Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, QuestionActivity::class.java)
+            intent.putExtra("DATE", quizzes[position].title)
+            context.startActivity(intent)
+        }
     }
 
     inner class QuizViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
